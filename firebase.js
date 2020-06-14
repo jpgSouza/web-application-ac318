@@ -10,9 +10,9 @@ var firebaseConfig = {
     appId: "1:68754286324:web:c8dda4aae4e5ce22c1a0a1"
   };
 
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
 
-module.exports.SigUpWithEmailAndPassword = (email, password) => {
+module.exports.SignUpWithEmailAndPassword = (email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email,password).then((doc) => {
         return JSON.stringify(doc)
     })
@@ -28,5 +28,20 @@ module.exports.SigUpWithEmailAndPassword = (email, password) => {
         return {err: error}
     });
 }
+
+module.exports.SignInWithEmailAndPassword = (email, password) => {
+    return firebase.auth().signInWithEmailAndPassword(email, password)
+           .catch(function(error) {
+             // Handle Errors here.
+             var errorCode = error.code;
+             var errorMessage = error.message;
+             if (errorCode === 'auth/wrong-password') {
+               return {err: 'Wrong password.'}
+             } else {
+               return {err: errorMessage}
+             }
+             return {err: error}
+           });
+   }
 
 return module.exports
