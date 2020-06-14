@@ -1,6 +1,4 @@
-<%- include('partials/header') %>
-<style>
-        
+
 /* BASIC */
 
 html {
@@ -117,7 +115,7 @@ html {
     transform: scale(0.95);
   }
   
-  input {
+  input[type=text] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -263,29 +261,3 @@ html {
     width:60%;
   }
   
-</style>
-        <div class="wrapper fadeInDown">
-                <div id="formContent">
-                  <!-- Tabs Titles -->
-              
-                  <!-- Icon -->
-                  <div class="fadeIn first">
-                    
-                  </div>
-              
-                  <!-- Login Form -->
-                  <form action="/login" method="POST">
-                    <input type="email" id="login" class="fadeIn second" name="email" placeholder="e-mail">
-                    <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-                    <input type="submit" class="fadeIn fourth" value="Log In">
-                  </form>
-              
-                  <!-- Remind Passowrd -->
-                  <div id="formFooter">
-                    <a class="underlineHover" href="/createuser">Não tem conta? Cadastre-se</a>
-                  </div>
-              
-                </div>
-              </div>
-    <hr></hr>
-<%- include('partials/footer') %>

@@ -44,4 +44,9 @@ module.exports.SignInWithEmailAndPassword = (email, password) => {
            });
    }
 
+module.exports.InputData = (email, name, lastname, cpf) => {
+  console.log(name)
+}
+  
+
 return module.exports

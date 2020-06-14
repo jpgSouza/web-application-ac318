@@ -274,16 +274,14 @@ html {
                   </div>
               
                   <!-- Login Form -->
-                  <form action="/login" method="POST">
-                    <input type="email" id="login" class="fadeIn second" name="email" placeholder="e-mail">
+                  <form action="/createuser" method="POST">
+                    <input type="text" id="name" class="fadeIn second" name="name" placeholder="Nome">
+                    <input type="text" id="lastname" class="fadeIn second" name="lastname" placeholder="Sobrenome">
+                    <input type="email" id="email" class="fadeIn second" name="email" placeholder="E-mail">
+                    <input type="text" id="cpf" class="fadeIn second" name="cpf" placeholder="CPF">
                     <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-                    <input type="submit" class="fadeIn fourth" value="Log In">
+                    <input type="submit" class="fadeIn fourth" value="Cadastrar">
                   </form>
-              
-                  <!-- Remind Passowrd -->
-                  <div id="formFooter">
-                    <a class="underlineHover" href="/createuser">Não tem conta? Cadastre-se</a>
-                  </div>
               
                 </div>
               </div>

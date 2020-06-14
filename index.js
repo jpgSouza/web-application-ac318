@@ -4,10 +4,11 @@ const firebase = require('firebase');
 const Auth = require('./firebase.js');
 const ejs = require('ejs');
 
+let userLogged;
 const app = express()
-var publicDir = require('path').join(__dirname,'/public');
+var publicDir = require('path').join(__dirname, '/public');
 
-app.use(bodyparser.urlencoded({extended: true}));
+app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.static(publicDir));
 app.use('/', express.static(__dirname + '/www')); // redirect root
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
@@ -17,9 +18,9 @@ app.use('/style', express.static(__dirname + '/style/')); // redirect CSS bootst
 app.set('view engine', 'ejs');
 
 firebase.auth().onAuthStateChanged((user) => {
-    if(user){
+    if (user) {
         userLogged = user
-    }else{
+    } else {
         userLogged = null
     }
 })
@@ -29,36 +30,39 @@ app.get('/', (req, res) => {
 })
 
 app.post('/createuser', (req, res) => {
-    Auth.SignUpWithEmailAndPassword(req.body.email,req.body.password).then((user) => {
-       if(!user.err){
-          let userData = JSON.parse(user)
-          userData = userData.user
-          Auth.insertUserData(userData).then(() => {
-            res.redirect('/dashboard')
-          })
-       }else{
-          return user.err
-       }
-   })
-  })
+    Auth.SignUpWithEmailAndPassword(req.body.email, req.body.password, req.body.name, req.body.lastname, req.body.cpf).then((user) => {
+        if (!user.err) {
+            let userData = JSON.parse(user)
+            userData = userData.user
+            Auth.InputData(req.body.email, req.body.name, req.body.lastname, req.body.cpf)
+            res.redirect('/')
+        } else {
+            return user.err
+        }
+    })
+})
 
 app.post('/login', (req, res) => {
     let getBody = req.body;
-    Auth.SignUpWithEmailAndPassword(getBody.email, getBody.password).then((login) => {
-        if(!login.err){
+    Auth.SignInWithEmailAndPassword(getBody.email, getBody.password).then((login) => {
+        if (!login.err) {
             res.redirect('/dashboard')
-        }else{
+        } else {
             res.redirect('/')
         }
     })
 })
 
-app.get('/dashboard', function (req, res){
-    if(userLogged){
+app.get('/dashboard', function (req, res) {
+    if (userLogged) {
         res.render('dashboard');
-    }else{
+    } else {
         res.redirect('/')
     }
+})
+
+app.get('/createuser', function (req, res) {
+    res.render('createuser');
 })
 
 app.listen(3000)
