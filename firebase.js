@@ -1,4 +1,5 @@
 const firebase = require('firebase');
+const { firestore } = require('firebase');
 
 var firebaseConfig = {
     apiKey: "AIzaSyAPUikQqybSDlEik0FyV9dI-hTol7077uA",
@@ -12,8 +13,16 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+db = firebase.firestore();
+var uid;
+var docRef;
+
 module.exports.SignUpWithEmailAndPassword = (email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email,password).then((doc) => {
+        var user = firebase.auth().currentUser;
+        uid = user.uid;
+        docRef = db.collection("users").doc(uid);
+        console.log(uid);
         return JSON.stringify(doc)
     })
     .catch(function(error) {
@@ -45,7 +54,16 @@ module.exports.SignInWithEmailAndPassword = (email, password) => {
    }
 
 module.exports.InputData = (email, name, lastname, cpf) => {
-  console.log(name)
+  docRef.set({
+    email: email,
+    name: name,
+    lastname: lastname,
+    cpf: cpf
+  }).then(function(){
+    console.log("Saved");
+  }).catch(function(err){
+    console.log("Erro: ", err)
+  });
 }
   
 

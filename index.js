@@ -5,6 +5,7 @@ const Auth = require('./firebase.js');
 const ejs = require('ejs');
 
 let userLogged;
+
 const app = express()
 var publicDir = require('path').join(__dirname, '/public');
 
