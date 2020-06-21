@@ -1,5 +1,6 @@
 const firebase = require('firebase');
 const { firestore } = require('firebase');
+const { query } = require('express');
 
 var firebaseConfig = {
     apiKey: "AIzaSyAPUikQqybSDlEik0FyV9dI-hTol7077uA",
@@ -65,6 +66,13 @@ module.exports.InputData = (email, name, lastname, cpf) => {
     console.log("Erro: ", err)
   });
 }
-  
+ 
+module.exports.GetEventData = () =>{
+  db.collection("events").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      console.log(doc.data())
+    })
+  })
+}
 
 return module.exports

@@ -57,6 +57,7 @@ app.post('/login', (req, res) => {
 
 app.get('/dashboard', function (req, res) {
     if (userLogged) {
+        Auth.GetEventData()
         res.render('dashboard');
     } else {
         res.redirect('/')
