@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<style>
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    .menu-principal {
+        width: 100%;
+        background-color: #252323;
+        height: 60px;
+    }
+
+    main {
+        margin: 0 auto;
+        width: 980px;
+        position: relative;
+    }
+
+    .logo {
+        float: left;
+        padding: 0;
+        width: 70%;
+    }
+
+    .redes-sociais ul li {
+        margin-top: 16px;
+        margin-left: 15px;
+        display: inline-block;
+        float: left;
+        list-style: none;
+    }
+
+    .redes-socias {
+        width: 25%;
+        float: right;
+    }
+
+    .header-2 {
+        background-color: #ffffff;
+        width: 100%;
+        border-top: 3px solid #efefef;
+    }
+
+    .menu ul li {
+        display: inline-block;
+        color: #8b8b8b;
+        margin-left: 15px;
+    }
+
+    .menu ul li a {
+        color: #8b8b8b;
+        text-decoration: none;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+    .menu {
+        width: 70%;
+        float: left;
+    }
+
+    .busca {
+        width: 30%;
+        float: right;
+    }
+
+
+    .head {
+        float: left;
+        width: 100%;
+    }
+
+    .search-box {
+        width: 90%;
+        margin: 0 auto 40px;
+        box-shadow: 10px 13px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .listing-block {
+        background: #fff;
+        height: 500px;
+        padding-top: 20px;
+        overflow-y: scroll;
+    }
+
+    .slimScrollDiv {
+        width: 80% !important;
+    }
+
+    .media {
+        background: #fff;
+        position: relative;
+        margin-bottom: 15px;
+    }
+
+    .media img {
+        width: 200px;
+        margin: 0;
+        height: 136px;
+    }
+
+    .media-body {
+        border: 1px solid #bcbcbc;
+        border-left: 0;
+        height: 136px;
+    }
+
+    .media .price {
+        float: left;
+        width: 100%;
+        font-size: 30px;
+        font-weight: 600;
+        color: #4765AB;
+    }
+
+    .media .price small {
+        display: block;
+        font-size: 17px;
+        color: #232323;
+    }
+
+    .media .stats {
+        float: left;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .media .stats span {
+        float: left;
+        margin-right: 10px;
+        font-size: 15px;
+    }
+
+    .media .stats span i {
+        margin-right: 7px;
+        color: #4765AB;
+    }
+
+    .media .address {
+        float: left;
+        width: 100%;
+        font-size: 14px;
+        margin-top: 5px;
+        color: #888;
+    }
+
+    .media .fav-box {
+        position: absolute;
+        right: 10px;
+        font-size: 20px;
+        top: 4px;
+        color: #E74C3C;
+    }
+
+    .bg-gradient-primary {
+        background: #007bff linear-gradient(180deg, #268fff, #007bff) repeat-x !important;
+    }
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+        width: 25%;
+    }
+
+    .jumbotron {
+        background: #358CCE;
+        color: #FFF;
+        border-radius: 0px;
+    }
+
+    .jumbotron-sm {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+
+    .jumbotron small {
+        color: #FFF;
+    }
+
+    .h1 small {
+        font-size: 24px;
+    }
+</style>
+
+<head>
+    <meta charset="UFT-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> DashBoard </title>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+    <div class="jumbotron jumbotron-sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-12">
+                    <h1 class="h1">
+                        Contact us <small>Feel free to contact us</small></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="well well-sm">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">
+                                        Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter name"
+                                        required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">
+                                        Email Address</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span
+                                                class="glyphicon glyphicon-envelope"></span>
+                                        </span>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter email"
+                                            required="required" /></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">
+                                        Subject</label>
+                                    <select id="subject" name="subject" class="form-control" required="required">
+                                        <option value="na" selected="">Choose One:</option>
+                                        <option value="service">General Customer Service</option>
+                                        <option value="suggestions">Suggestions</option>
+                                        <option value="product">Product Support</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">
+                                        Message</label>
+                                    <textarea name="message" id="message" class="form-control" rows="9" cols="25"
+                                        required="required" placeholder="Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                                    Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <form>
+                    <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
+                    <address>
+                        <strong>Twitter, Inc.</strong><br>
+                        795 Folsom Ave, Suite 600<br>
+                        San Francisco, CA 94107<br>
+                        <abbr title="Phone">
+                            P:</abbr>
+                        (123) 456-7890
+                    </address>
+                    <address>
+                        <strong>Full Name</strong><br>
+                        <a href="mailto:#">first.last@example.com</a>
+                    </address>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>

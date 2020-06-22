@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<style>
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    .menu-principal {
+        width: 100%;
+        background-color: #252323;
+        height: 60px;
+    }
+
+    main {
+        margin: 0 auto;
+        width: 980px;
+        position: relative;
+    }
+
+    .logo {
+        float: left;
+        padding: 0;
+        width: 70%;
+    }
+
+    .redes-sociais ul li {
+        margin-top: 16px;
+        margin-left: 15px;
+        display: inline-block;
+        float: left;
+        list-style: none;
+    }
+
+    .redes-socias {
+        width: 25%;
+        float: right;
+    }
+
+    .header-2 {
+        background-color: #ffffff;
+        width: 100%;
+        border-top: 3px solid #efefef;
+    }
+
+    .menu ul li {
+        display: inline-block;
+        color: #8b8b8b;
+        margin-left: 15px;
+    }
+
+    .menu ul li a {
+        color: #8b8b8b;
+        text-decoration: none;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+    .menu {
+        width: 70%;
+        float: left;
+    }
+
+    .busca {
+        width: 30%;
+        float: right;
+    }
+
+
+    .head {
+        float: left;
+        width: 100%;
+    }
+
+    .search-box {
+        width: 90%;
+        margin: 0 auto 40px;
+        box-shadow: 10px 13px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .listing-block {
+        background: #fff;
+        height: 500px;
+        padding-top: 20px;
+        overflow-y: scroll;
+    }
+
+    .slimScrollDiv {
+        width: 80% !important;
+    }
+
+    .media {
+        background: #fff;
+        position: relative;
+        margin-bottom: 15px;
+    }
+
+    .media img {
+        width: 200px;
+        margin: 0;
+        height: 136px;
+    }
+
+    .media-body {
+        border: 1px solid #bcbcbc;
+        border-left: 0;
+        height: 136px;
+    }
+
+    .media .price {
+        float: left;
+        width: 100%;
+        font-size: 30px;
+        font-weight: 600;
+        color: #4765AB;
+    }
+
+    .media .price small {
+        display: block;
+        font-size: 17px;
+        color: #232323;
+    }
+
+    .media .stats {
+        float: left;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .media .stats span {
+        float: left;
+        margin-right: 10px;
+        font-size: 15px;
+    }
+
+    .media .stats span i {
+        margin-right: 7px;
+        color: #4765AB;
+    }
+
+    .media .address {
+        float: left;
+        width: 100%;
+        font-size: 14px;
+        margin-top: 5px;
+        color: #888;
+    }
+
+    .media .fav-box {
+        position: absolute;
+        right: 10px;
+        font-size: 20px;
+        top: 4px;
+        color: #E74C3C;
+    }
+
+    .bg-gradient-primary {
+        background: #007bff linear-gradient(180deg, #268fff, #007bff) repeat-x !important;
+    }
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+        width: 25%;
+    }
+
+    .perfisimg{
+        width: 100% !important;
+    }
+
+    .afastardotopo{
+        margin-top: 50px;
+    }
+
+
+    /* CSS COMENTARIOS */
+.widget .panel-body { padding:0px; }
+.widget .list-group { margin-bottom: 0; }
+.widget .panel-title { display:inline }
+.widget .label-info { float: right; }
+.widget li.list-group-item {border-radius: 0;border: 0;border-top: 1px solid #ddd;}
+.widget li.list-group-item:hover { background-color: rgba(86,61,124,.1); }
+.widget .mic-info { color: #666666;font-size: 11px; }
+.widget .action { margin-top:5px; }
+.widget .comment-text { font-size: 12px; }
+.widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
+
+</style>
+
+<head>
+    <meta charset="UFT-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> DashBoard </title>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+    <!-- COMENTARIOS -->
+<div class="container afastardotopo">
+
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Recent Comments</h3>
+                <span class="label label-info">
+                    Numero de comentarios</span>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+                                <img src="http://placehold.it/80" class="img-circle img-responsive perfisimg" alt="" /></div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
+                                        Google Style Login Page Design Using Bootstrap</a>
+                                    <div class="mic-info">
+                                        By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                                    </div>
+                                </div>
+                                <div class="comment-text">
+                                    Awesome design
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <hr/>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+                                <img src="http://placehold.it/80" class="img-circle img-responsive perfisimg" alt="" /></div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/Obgj">Admin Panel Quick Shortcuts</a>
+                                    <div class="mic-info">
+                                        By: <a href="#">Bhaumik Patel</a> on 11 Nov 2013
+                                    </div>
+                                </div>
+                                <div class="comment-text">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <hr/>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+                                <img src="https://www.torredevigilancia.com/wp-content/uploads/2019/10/coringa-55.jpg" class="img-circle img-responsive perfisimg" alt="" /></div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/4ldn">Cool Sign Up</a>
+                                    <div class="mic-info">
+                                        By: <a href="#">Bhaumik Patel</a> on 11 Nov 2013
+                                    </div>
+                                </div>
+                                <div class="comment-text">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <hr/>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>

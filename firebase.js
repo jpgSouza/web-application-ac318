@@ -23,7 +23,6 @@ module.exports.SignUpWithEmailAndPassword = (email, password) => {
         var user = firebase.auth().currentUser;
         uid = user.uid;
         docRef = db.collection("users").doc(uid);
-        console.log(uid);
         return JSON.stringify(doc)
     })
     .catch(function(error) {
@@ -66,17 +65,6 @@ module.exports.InputData = (email, name, lastname, cpf) => {
     console.log("Erro: ", err)
   });
 }
- 
-// module.exports.GetEventData = () =>{
-//   let events;
-//   // db.collection("events").get().then((querySnapshot) => {
-//   //   querySnapshot.forEach((doc) => {
-      
-//   //   })
-//   //   return querySnapshot.size
-//   // })
-
-// }
 
 
 return module.exports

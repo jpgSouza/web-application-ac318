@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<style>
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    .menu-principal {
+        width: 100%;
+        background-color: #252323;
+        height: 60px;
+    }
+
+    main {
+        margin: 0 auto;
+        width: 980px;
+        position: relative;
+    }
+
+    .logo {
+        float: left;
+        padding: 0;
+        width: 70%;
+    }
+
+    .redes-sociais ul li {
+        margin-top: 16px;
+        margin-left: 15px;
+        display: inline-block;
+        float: left;
+        list-style: none;
+    }
+
+    .redes-socias {
+        width: 25%;
+        float: right;
+    }
+
+    .header-2 {
+        background-color: #ffffff;
+        width: 100%;
+        border-top: 3px solid #efefef;
+    }
+
+    .menu ul li {
+        display: inline-block;
+        color: #8b8b8b;
+        margin-left: 15px;
+    }
+
+    .menu ul li a {
+        color: #8b8b8b;
+        text-decoration: none;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+    .menu {
+        width: 70%;
+        float: left;
+    }
+
+    .busca {
+        width: 30%;
+        float: right;
+    }
+
+    .head {
+        float: left;
+        width: 100%;
+    }
+
+    .search-box {
+        width: 90%;
+        margin: 0 auto 40px;
+        box-shadow: 10px 13px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .listing-block {
+        background: #fff;
+        height: 500px;
+        padding-top: 20px;
+        overflow-y: scroll;
+    }
+
+    .slimScrollDiv {
+        width: 80% !important;
+    }
+
+    .media {
+        background: #fff;
+        position: relative;
+        margin-bottom: 15px;
+    }
+
+    .media img {
+        width: 200px;
+        margin: 0;
+        height: 136px;
+    }
+
+    .media-body {
+        border: 1px solid #bcbcbc;
+        border-left: 0;
+        height: 136px;
+    }
+
+    .media .price {
+        float: left;
+        width: 100%;
+        font-size: 30px;
+        font-weight: 600;
+        color: #4765AB;
+    }
+
+    .media .price small {
+        display: block;
+        font-size: 17px;
+        color: #232323;
+    }
+
+    .media .stats {
+        float: left;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .media .stats span {
+        float: left;
+        margin-right: 10px;
+        font-size: 15px;
+    }
+
+    .media .stats span i {
+        margin-right: 7px;
+        color: #4765AB;
+    }
+
+    .media .address {
+        float: left;
+        width: 100%;
+        font-size: 14px;
+        margin-top: 5px;
+        color: #888;
+    }
+
+    .media .fav-box {
+        position: absolute;
+        right: 10px;
+        font-size: 20px;
+        top: 4px;
+        color: #E74C3C;
+    }
+
+    .bg-gradient-primary {
+        background: #007bff linear-gradient(180deg, #268fff, #007bff) repeat-x !important;
+    }
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+        width: 25%;
+    }
+
+    .inf-content {
+        border: 1px solid #DDDDDD;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    .cardstyle {
+        margin-top: 50px;
+    }
+</style>
+
+<head>
+    <meta charset="UFT-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> DashBoard </title>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+    <!-- Perfil -->
+    <div class="container bootstrap snippet cardstyle">
+        <div class="panel-body inf-content">
+            <form action="/updateuser" method="POST">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip"
+                            src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario">
+                        <ul title="Ratings" class="list-inline ratings text-center">
+                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Informações</strong><br>
+                        <div class="table-responsive">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                                Identificação
+                                            </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" value="<%= user[0].id %>"
+                                                    disabled>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-user  text-primary"></span>
+                                                Nome
+                                            </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            <div class="form-group">
+                                                <input name="name" type="text" class="form-control editardados"
+                                                    placeholder="nome" value="<%= user[0].dados.name %>">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-cloud text-primary"></span>
+                                                Sobrenome
+                                            </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            <div class="form-group">
+                                                <input name="lastname" type="text" class="form-control editardados"
+                                                    placeholder="sobrenome" value="<%= user[0].dados.lastname %>">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-bookmark text-primary"></span>
+                                                CPF
+                                            </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            <div class="form-group">
+                                                <input name="cpf" type="text" class="form-control editardados"
+                                                    placeholder="username" value="<%= user[0].dados.cpf %>">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>
+                                                <span class="glyphicon glyphicon-envelope text-primary"></span>
+                                                Data de nascimento
+                                            </strong>
+                                        </td>
+                                        <td class="text-primary">
+                                            <div class="form-group">
+                                                <input name="date" type="date" class="form-control editardados"
+                                                    placeholder="email" value="<%= user[0].dados.date %>">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="margin:0 10px 10px 0px" class="d-flex justify-content-end">
+                    <button style="margin-right: 10px" class="btn btn-secondary editar">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- FIM PERFIL -->
+
+    <!-- Button trigger modal -->
+    <div class="container">
+        <div class="row d-flex justify-content-center cardstyle">
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#eventomodal">
+                Cadastrar evento
+            </button>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#imovelmodal"
+                style="margin-left: 10px;">
+                Cadastrar imóvel
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 cardstyle">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 cardstyle">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 cardstyle">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 cardstyle">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal1 -->
+    <div class="modal fade" id="eventomodal" tabindex="-1" role="dialog" aria-labelledby="eventomodalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eventomodalLabel">Evento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="/createevent" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="fotoevento">Foto</label>
+                            <input type="file" class="form-control" id="fotoevento" placeholder="foto">
+                        </div>
+                        <div class="form-group">
+                            <label for="nomeevento">Nome do evento</label>
+                            <input name="name" type="text" class="form-control" id="nomeevento" placeholder="Nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="dataevento">Data</label>
+                            <input name="date" type="datetime-local" class="form-control" id="dataevento"
+                                placeholder="Data">
+                        </div>
+                        <div class="form-group">
+                            <label for="localevento">Local</label>
+                            <input name="place" type="text" class="form-control" id="localevento" placeholder="Local">
+                        </div>
+                        <div class="form-group">
+                            <label for="localevento">Preco</label>
+                            <input name="price" type="text" class="form-control" id="precoevento" placeholder="Preco">
+                        </div>
+                        <div class="form-group">
+                            <label for="descricaoevento">Descrição</label>
+                            <input name="description" type="text" class="form-control" id="descricaoevento"
+                                placeholder="Descrição">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Imovel -->
+    <div class="modal fade" id="imovelmodal" tabindex="-1" role="dialog" aria-labelledby="imovelmodalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imovelmodalLabel">Imovel</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="fotoevento">Foto</label>
+                            <input type="file" class="form-control" id="fotoevento" placeholder="foto">
+                        </div>
+                        <div class="form-group">
+                            <label for="nomeevento">Identificação</label>
+                            <input type="text" class="form-control" id="identificacao" placeholder="identificacao">
+                        </div>
+                        <div class="form-group">
+                            <label for="dataimovel">Data</label>
+                            <input type="datetime-local" class="form-control" id="dataimovel" placeholder="Data">
+                        </div>
+                        <div class="form-group">
+                            <label for="localimovel">Local</label>
+                            <input type="text" class="form-control" id="localimovel" placeholder="Local">
+                        </div>
+                        <div class="form-group">
+                            <label for="localimovel">Preço</label>
+                            <input type="text" class="form-control" id="precoimovel" placeholder="Preco">
+                        </div>
+                        <div class="form-group">
+                            <label for="descricaoimovel">Descrição</label>
+                            <input type="text" class="form-control" id="descricaoimovel" placeholder="Descrição">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $(".editardados").prop("disabled", false);
+        });
+    </script>
+
+</body>

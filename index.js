@@ -67,8 +67,44 @@ app.get('/dashboard', function (req, res) {
                     eventsDate.push({ id: doc.id, dados: doc.data() })
                 });
                 console.log(eventsDate)
-                res.render('dashboard', {events: eventsDate})
+                res.render('dashboard', { events: eventsDate })
             })
+    } else {
+        res.redirect('/')
+    }
+})
+
+app.get('/perfil', function (req, res) {
+    if (userLogged) {
+        let userRef = db.collection('users');
+        var currentUser = firebase.auth().currentUser;
+        uid = currentUser.uid
+        let user = userRef.get()
+            .then(snapshot => {
+                const userData = []
+                snapshot.forEach(doc => {
+                    if (doc.id == uid) {
+                        userData.push({ id: doc.id, dados: doc.data() })
+                    }
+                });
+                res.render('perfil', { user: userData })
+            })
+    } else {
+        res.redirect('/')
+    }
+})
+
+app.get('/depoimentos', function (req, res) {
+    if (userLogged) {
+        res.render('depoimentos')
+    } else {
+        res.redirect('/')
+    }
+})
+
+app.get('/contact', function (req, res) {
+    if (userLogged) {
+        res.render('contact')
     } else {
         res.redirect('/')
     }
@@ -77,5 +113,33 @@ app.get('/dashboard', function (req, res) {
 app.get('/createuser', function (req, res) {
     res.render('createuser');
 })
+
+app.post('/updateuser', function (req, res) {
+    var currentUser = firebase.auth().currentUser;
+    uid = currentUser.uid
+    let userRef = db.collection('users').doc(uid);
+    let updateUser = userRef.update({ name: req.body.name, lastname: req.body.lastname, cpf: req.body.cpf, date: req.body.date })
+    res.redirect('/perfil')
+})
+
+app.post('/createevent', function (req, res) {
+    let eventRef = db.collection('events')
+    price = req.body.price
+    price = parseFloat(price)
+    let createEvent = eventRef.add({
+        name: req.body.name,
+        date: req.body.date, place: req.body.place, price: price, description: req.body.description
+    }).then((event) => {
+        console.log(event.id)
+        var currentUser = firebase.auth().currentUser;
+        uid = currentUser.uid
+        myEventRef = db.collection("users").doc(uid).collection("myEvents").doc(event.id)
+        myEventRef.set({
+            eid: event.id
+        })
+    })
+    res.redirect('/dashboard')
+})
+
 
 app.listen(3000)

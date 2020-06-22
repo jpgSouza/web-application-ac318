@@ -1,12 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UFT-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title> Login </title>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    </head>
-    <body>
+
+<head>
+    <meta charset="UFT-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Login </title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/95ab7e4bda.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-gradient-primary">
+
+        <div class="container">
+            <a class="navbar-brand h1 mb-0" href="#"><img src="img/invago-logo.png"></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSite">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a onclick=" location.href = '/dashboard'" class="nav-link" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick=" location.href = '/perfil'" class="nav-link" href="#">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick=" location.href = '/depoimentos'" class="nav-link" href="#">Depoimentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick=" location.href = '/contact'" class="nav-link" href="#">Contato</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="navDrop">
+                            Social
+                        </a>
+                        <div class="dropdown-menu">
+                            <a onclick=' href="https://www.facebook.com"' class="dropdown-item" target="_blank" style="cursor: pointer;">Facebook</a>
+                            <a onclick=' href="https://www.twitter.com"' class="dropdown-item" target="_blank" style="cursor: pointer;">Twitter</a>
+                            <a onclick=' href="https://www.instagram.com"' class="dropdown-item" target="_blank" style="cursor: pointer;">Instagram</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline">
+                    <input class="form-control ml-4 mr-2" type="search" placeholder="Buscar eventos">
+                    <button class="btn btn-dark" type="Submit">Ok</button>
+                </form>
+            </div>
+        </div>
+
+    </nav>
+</body>
+</html>
