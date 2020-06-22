@@ -62,11 +62,12 @@ app.get('/dashboard', function (req, res) {
         let eventsRef = db.collection('events');
         let allEvents = eventsRef.get()
             .then(snapshot => {
+                const eventsDate = []
                 snapshot.forEach(doc => {
-                    console.log(doc.id, '=>', doc.data());
-                    name = doc.data()
+                    eventsDate.push({ id: doc.id, dados: doc.data() })
                 });
-                res.render('dashboard', {events: name})
+                console.log(eventsDate)
+                res.render('dashboard', {events: eventsDate})
             })
     } else {
         res.redirect('/')

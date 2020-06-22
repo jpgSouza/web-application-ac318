@@ -328,112 +328,29 @@
                     </nav>
                 </nav>
             </div>
-
-            <ul>
-
-                <li><%= events.name %></li>
-
-            </ul>
-
             <div class="col-9">
                 <div data-spy="scroll" data-target="#navbarVertical" data-offset="0" class="scrollspySite">
                     <div class="col-md-12 listing-block" id="item1">
-                        <div class="media">
-                            <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
-                            </div>
-                            <img class="d-flex align-self-start"
-                                src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb"
-                                alt="Generic placeholder image">
-                            <div class="media-body pl-3">
-                                <div class="price">$799,000<small>New York</small></div>
-                                <div class="stats">
-                                    <span><i class="fa fa-arrows-alt"></i>1678 Sq ft</span>
-                                    <span><i class="fa fa-bath"></i>2 Beadrooms</span>
+                        <% events.forEach(function(event) { %> <!-- AQUI ESTOU FAZENDO O FOR -->
+                            <!-- VAI REPETIR ESSA DIV ENQUANTO ESTIVER DADOS NO BANCO -->
+                            <div class="media">
+                                <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
                                 </div>
-                                <div class="address">4062 Walnut Hill Drive
-                                    Cincinnati</div>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
-                            </div>
-                            <img class="d-flex align-self-start"
-                                src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?h=350&auto=compress&cs=tinysrgb"
-                                alt="Generic placeholder image">
-                            <div class="media-body pl-3">
-                                <div class="price">$506,400<small>New York</small></div>
-                                <div class="stats">
-                                    <span><i class="fa fa-arrows-alt"></i>1678 Sq ft</span>
-                                    <span><i class="fa fa-bath"></i>2 Beadrooms</span>
+                                <img class="d-flex align-self-start"
+                                    src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb"
+                                    alt="Generic placeholder image">
+                                <div class="media-body pl-3">
+                                    <!-- AQUI ESTOU MOSTRANDO OS ITENS DE ACORDO [DEFAULT: EVENT.DADOS.(O Q VC QUER) ]-->
+                                    <div class="price"><%= event.dados.price %><small><%= event.dados.name %></small></div>
+                                    <div class="stats">
+                                        <span><i class="fa fa-arrows-alt"></i><%= event.dados.place %></span>
+                                        <span><i class="fa fa-bath"></i><%= event.dados.date %></span>
+                                    </div>
+                                    <div class="address"><%= event.dados.description %>
+                                        </div>
                                 </div>
-                                <div class="address">4062 Walnut Hill Drive
-                                    Cincinnati</div>
                             </div>
-                        </div>
-                        <div class="media">
-                            <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
-                            </div>
-                            <img class="d-flex align-self-start"
-                                src="https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?h=350&auto=compress&cs=tinysrgb"
-                                alt="Generic placeholder image">
-                            <div class="media-body pl-3">
-                                <div class="price">$506,400<small>New York</small></div>
-                                <div class="stats">
-                                    <span><i class="fa fa-arrows-alt"></i>1678 Sq ft</span>
-                                    <span><i class="fa fa-bath"></i>2 Beadrooms</span>
-                                </div>
-                                <div class="address">4062 Walnut Hill Drive
-                                    Cincinnati</div>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
-                            </div>
-                            <img class="d-flex align-self-start"
-                                src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?h=350&auto=compress&cs=tinysrgb"
-                                alt="Generic placeholder image">
-                            <div class="media-body pl-3">
-                                <div class="price">$799,000<small>New York</small></div>
-                                <div class="stats">
-                                    <span><i class="fa fa-arrows-alt"></i>1678 Sq ft</span>
-                                    <span><i class="fa fa-bath"></i>2 Beadrooms</span>
-                                </div>
-                                <div class="address">4062 Walnut Hill Drive
-                                    Cincinnati</div>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
-                            </div>
-                            <img class="d-flex align-self-start"
-                                src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?h=350&auto=compress&cs=tinysrgb"
-                                alt="Generic placeholder image">
-                            <div class="media-body pl-3">
-                                <div class="price">$506,400<small>New York</small></div>
-                                <div class="stats">
-                                    <span><i class="fa fa-arrows-alt"></i>1678 Sq ft</span>
-                                    <span><i class="fa fa-bath"></i>2 Beadrooms</span>
-                                </div>
-                                <div class="address">4062 Walnut Hill Drive
-                                    Cincinnati</div>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="fav-box"><i class="fa fa-heart-o" aria-hidden="true"></i>
-                            </div>
-                            <img class="d-flex align-self-start"
-                                src="https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?h=350&auto=compress&cs=tinysrgb"
-                                alt="Generic placeholder image">
-                            <div class="media-body pl-3">
-                                <div class="price">$506,400<small>New York</small></div>
-                                <div class="stats">
-                                    <span><i class="fa fa-arrows-alt"></i>1678 Sq ft</span>
-                                    <span><i class="fa fa-bath"></i>2 Beadrooms</span>
-                                </div>
-                                <div class="address">4062 Walnut Hill Drive
-                                    Cincinnati</div>
-                            </div>
-                        </div>
+                        <% }); %>
                     </div>
                 </div>
             </div>
