@@ -183,6 +183,16 @@
         top: 4px;
         color: #E74C3C;
     }
+
+    .bg-gradient-primary {
+        background: #007bff linear-gradient(180deg, #268fff, #007bff) repeat-x !important;
+    }
+
+    img {
+        vertical-align: middle;
+        border-style: none;
+        width: 25%;
+    }
 </style>
 <html lang="en">
 
@@ -201,7 +211,7 @@
     <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-gradient-primary">
 
         <div class="container">
-            <a class="navbar-brand h1 mb-0" href="#">Curso</a>
+            <a class="navbar-brand h1 mb-0" href="#"><img src="img/invago-logo.png"></a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
                 <span class="navbar-toggler-icon"></span>
@@ -318,6 +328,13 @@
                     </nav>
                 </nav>
             </div>
+
+            <ul>
+
+                <li><%= events.name %></li>
+
+            </ul>
+
             <div class="col-9">
                 <div data-spy="scroll" data-target="#navbarVertical" data-offset="0" class="scrollspySite">
                     <div class="col-md-12 listing-block" id="item1">

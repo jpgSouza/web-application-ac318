@@ -6,6 +6,7 @@ const ejs = require('ejs');
 
 let userLogged;
 
+db = firebase.firestore()
 const app = express()
 var publicDir = require('path').join(__dirname, '/public');
 
@@ -57,8 +58,16 @@ app.post('/login', (req, res) => {
 
 app.get('/dashboard', function (req, res) {
     if (userLogged) {
-        Auth.GetEventData()
-        res.render('dashboard');
+        var name
+        let eventsRef = db.collection('events');
+        let allEvents = eventsRef.get()
+            .then(snapshot => {
+                snapshot.forEach(doc => {
+                    console.log(doc.id, '=>', doc.data());
+                    name = doc.data()
+                });
+                res.render('dashboard', {events: name})
+            })
     } else {
         res.redirect('/')
     }

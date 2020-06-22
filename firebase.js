@@ -67,12 +67,16 @@ module.exports.InputData = (email, name, lastname, cpf) => {
   });
 }
  
-module.exports.GetEventData = () =>{
-  db.collection("events").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data())
-    })
-  })
-}
+// module.exports.GetEventData = () =>{
+//   let events;
+//   // db.collection("events").get().then((querySnapshot) => {
+//   //   querySnapshot.forEach((doc) => {
+      
+//   //   })
+//   //   return querySnapshot.size
+//   // })
+
+// }
+
 
 return module.exports
