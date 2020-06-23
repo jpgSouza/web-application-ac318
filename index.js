@@ -3,6 +3,7 @@ const bodyparser = require('body-parser');
 const firebase = require('firebase');
 const Auth = require('./firebase.js');
 const ejs = require('ejs');
+const { query } = require('express');
 
 let userLogged;
 
@@ -66,7 +67,6 @@ app.get('/dashboard', function (req, res) {
                 snapshot.forEach(doc => {
                     eventsDate.push({ id: doc.id, dados: doc.data() })
                 });
-                console.log(eventsDate)
                 res.render('dashboard', { events: eventsDate })
             })
     } else {
@@ -87,7 +87,30 @@ app.get('/perfil', function (req, res) {
                         userData.push({ id: doc.id, dados: doc.data() })
                     }
                 });
-                res.render('perfil', { user: userData })
+                let myEvents = db.collection("users").doc(uid).collection("myEvents").get().then(snapshot => {
+                    console.log("Antes do My Events")
+                    const myEventData = []
+                    snapshot.forEach((doc) => {
+                        myEventData.push({ id: doc.id })
+                    })
+                    let events = db.collection("events").get().then((events) => {
+                        cont = 0
+                        const eventsData = []
+                        events.forEach((docs) =>{
+                            
+                            if(cont == myEventData.length){
+                                return
+                            }
+                            if(myEventData[cont].id == docs.id){
+                                eventsData.push({ id: docs.id, dados: docs.data() })
+                                cont++
+                            }
+                        })
+                        res.render('perfil', { user: userData, myEvents: eventsData })
+                    })
+                })
+
+
             })
     } else {
         res.redirect('/')
@@ -130,7 +153,6 @@ app.post('/createevent', function (req, res) {
         name: req.body.name,
         date: req.body.date, place: req.body.place, price: price, description: req.body.description
     }).then((event) => {
-        console.log(event.id)
         var currentUser = firebase.auth().currentUser;
         uid = currentUser.uid
         myEventRef = db.collection("users").doc(uid).collection("myEvents").doc(event.id)

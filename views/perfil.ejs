@@ -306,56 +306,23 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="margin-bottom: 50px;">
+        <h5>Meus Eventos</h5>
         <div class="row">
-            <div class="col-md-3 cardstyle">
+            <% myEvents.forEach(function(eventData) { %>
+            <div class="col-md-3 cardstyle" style="margin-right: 10px;">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <img class="card-img-top" src="<%= eventData.dados.img %>" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title"><%= eventData.dados.name %></h5>
+                        <p class="card-text"><%= eventData.dados.description %></p>
+                        <a href="#" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 cardstyle">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 cardstyle">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 cardstyle">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+            <% }); %>
         </div>
     </div>
-
-
 
     <!-- Modal1 -->
     <div class="modal fade" id="eventomodal" tabindex="-1" role="dialog" aria-labelledby="eventomodalLabel"
