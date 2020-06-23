@@ -1,4 +1,3 @@
-
 <head>
   <meta charset="UFT-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +9,6 @@
 
 <style>
         
-/* BASIC */
-
 html {
     background-color: #56baed;
   }
@@ -37,11 +34,7 @@ html {
     margin: 40px 8px 10px 8px; 
     color: #cccccc;
   }
-  
-  
-  
-  /* STRUCTURE */
-  
+
   .wrapper {
     display: flex;
     align-items: center;
@@ -75,10 +68,6 @@ html {
     border-radius: 0 0 10px 10px;
   }
   
-  
-  
-  /* TABS */
-  
   h2.inactive {
     color: #cccccc;
   }
@@ -87,10 +76,6 @@ html {
     color: #0d0d0d;
     border-bottom: 2px solid #5fbae9;
   }
-  
-  
-  
-  /* FORM TYPOGRAPHY*/
   
   input[type=button], input[type=submit], input[type=reset]  {
     background-color: #56baed;
@@ -156,11 +141,6 @@ html {
     color: #cccccc;
   }
   
-  
-  
-  /* ANIMATIONS */
-  
-  /* Simple CSS3 Fade-in-down Animation */
   .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
@@ -196,7 +176,6 @@ html {
     }
   }
   
-  /* Simple CSS3 Fade-in Animation */
   @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -240,7 +219,6 @@ html {
     animation-delay: 1s;
   }
   
-  /* Simple CSS3 Fade-in Animation */
   .underlineHover:after {
     display: block;
     left: 0;
@@ -260,10 +238,6 @@ html {
     width: 100%;
   }
   
-  
-  
-  /* OTHERS */
-  
   *:focus {
       outline: none;
   } 
@@ -276,21 +250,17 @@ html {
 </head>
         <div class="wrapper fadeInDown">
                 <div id="formContent">
-                  <!-- Tabs Titles -->
-              
-                  <!-- Icon -->
+
                   <div class="fadeIn first">
                     <img src="./img/invago-logo.png" id="icon"/>
                   </div>
               
-                  <!-- Login Form -->
                   <form action="/login" method="POST">
                     <input type="email" id="login" class="fadeIn second" name="email" placeholder="e-mail">
                     <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
                     <input type="submit" class="fadeIn fourth" value="Login">
                   </form>
               
-                  <!-- Remind Passowrd -->
                   <div id="formFooter">
                     <a class="underlineHover" href="/createuser">Não tem conta? Cadastre-se</a>
                   </div>

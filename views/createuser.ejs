@@ -1,7 +1,4 @@
 <style>
-        
-/* BASIC */
-
 html {
     background-color: #56baed;
   }
@@ -27,11 +24,6 @@ html {
     margin: 40px 8px 10px 8px; 
     color: #cccccc;
   }
-  
-  
-  
-  /* STRUCTURE */
-  
   .wrapper {
     display: flex;
     align-items: center;
@@ -65,10 +57,6 @@ html {
     border-radius: 0 0 10px 10px;
   }
   
-  
-  
-  /* TABS */
-  
   h2.inactive {
     color: #cccccc;
   }
@@ -77,10 +65,6 @@ html {
     color: #0d0d0d;
     border-bottom: 2px solid #5fbae9;
   }
-  
-  
-  
-  /* FORM TYPOGRAPHY*/
   
   input[type=button], input[type=submit], input[type=reset]  {
     background-color: #56baed;
@@ -185,7 +169,6 @@ html {
     }
   }
   
-  /* Simple CSS3 Fade-in Animation */
   @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -229,7 +212,6 @@ html {
     animation-delay: 1s;
   }
   
-  /* Simple CSS3 Fade-in Animation */
   .underlineHover:after {
     display: block;
     left: 0;
@@ -249,10 +231,6 @@ html {
     width: 100%;
   }
   
-  
-  
-  /* OTHERS */
-  
   *:focus {
       outline: none;
   } 
@@ -264,14 +242,10 @@ html {
 </style>
         <div class="wrapper fadeInDown">
                 <div id="formContent">
-                  <!-- Tabs Titles -->
-              
-                  <!-- Icon -->
                   <div class="fadeIn first">
                     
                   </div>
-              
-                  <!-- Login Form -->
+            
                   <form action="/createuser" method="POST">
                     <input type="text" id="name" class="fadeIn second" name="name" placeholder="Nome">
                     <input type="text" id="lastname" class="fadeIn second" name="lastname" placeholder="Sobrenome">
