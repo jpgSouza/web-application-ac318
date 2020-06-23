@@ -354,9 +354,9 @@
                                                 <div class="row" style="padding-left: 20px; padding-right: 8px;">
                                                     <div class="form-group" style="margin-right: 60px;">
                                                         <label for="amount">Quantidade</label>
-                                                        <input name="amount" type="number"
-                                                            class="form-control get-total" id="amount"
-                                                            placeholder="Quantidade">
+                                                        <input name="amount" type="number" min="1"
+                                                            class="form-control get-total<%= event.id %>" id="amount"
+                                                            placeholder="Quantidade" value="1">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="price">Preço</label>
@@ -364,7 +364,7 @@
                                                             type="hidden" class="form-control show-total" id="price"
                                                             placeholder="Preço">
                                                         <input value="<%= event.dados.price %>" type="text" disabled
-                                                            class="form-control show-total" placeholder="Preço">
+                                                            class="form-control show-total<%= event.id %>" placeholder="Preço">
                                                     </div>
                                                 </div>
                                             </div>
@@ -379,6 +379,18 @@
 
                                 </div>
                             </div>
+                            <script>
+                                $(document).ready(function () {
+                                    var st = $(".show-total<%= event.id %>").val();
+                                    $(".get-total<%= event.id %>").change(function () {
+                                        var gt = $(".get-total<%= event.id %>").val();
+
+                                        var total = gt * st;
+                                        $(".show-total<%= event.id %>").val(total);
+                                    });
+
+                                });
+                            </script>
                             <% }); %>
                         </div>
 
