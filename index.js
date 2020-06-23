@@ -163,5 +163,16 @@ app.post('/createevent', function (req, res) {
     res.redirect('/dashboard')
 })
 
+app.post('/deleteevent', function (req, res) {
+    console.log(req.body.id)
+    var currentUser = firebase.auth().currentUser;
+    uid = currentUser.uid
+    let myEventsRef = db.collection('users').doc(uid).collection("myEvents").doc(req.body.id);
+    let allEvents = db.collection('events').doc(req.body.id)
+    allEvents.delete()
+    myEventsRef.delete()
+    res.redirect('/perfil')
+})
+
 
 app.listen(3000)

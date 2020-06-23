@@ -316,7 +316,35 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= eventData.dados.name %></h5>
                         <p class="card-text"><%= eventData.dados.description %></p>
-                        <a href="#" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        <a data-toggle="modal" data-target="#excluir<%= eventData.id %>" href="#"
+                            class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="excluir<%= eventData.id %>" tabindex="-1" role="dialog"
+                aria-labelledby="eventomodalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Excluir Evento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <h2>
+                                <%= eventData.dados.name %>
+                            </h2>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <form action="/deleteevent", method="POST">
+                                <input name="id" type="hidden" value="<%= eventData.id %>">
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
