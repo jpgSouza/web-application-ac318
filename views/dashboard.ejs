@@ -195,6 +195,13 @@
         float: none;
         width: 100%;
     }
+    .new-media-body{
+        height: 180px;
+    }
+    .newmedia img{
+        height: 180px;
+    }
+
 </style>
 <html lang="en">
 
@@ -269,9 +276,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#menu1">Imóveis</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
-                            </li>
                         </ul>
                     </nav>
                 </ul>
@@ -291,7 +295,7 @@
                                         <span><i class="fa fa-map-marker"
                                                 aria-hidden="true"></i><%= event.dados.place %></span>
                                         <span><i class="fa fa-calendar"
-                                                aria-hidden="true"></i><%= event.dados.date %></span>
+                                                aria-hidden="true"></i><%= moment(event.dados.date).format('L, LT') %></span>
                                     </div>
                                     <div class="address"><%= event.dados.description %>
                                     </div>
@@ -299,30 +303,28 @@
                             </div>
                             <% }); %>
                         </div>
-                        <div id="menu1" class="container tab-pane fade"><br>
-                            <% events.forEach(function(event) { %>
-                            <div class="media">
-                                <img class="d-flex align-self-start" src=<%= event.dados.img %>
+                        <div id="menu1" class="container tab-pane fade" ><br>
+                            <% properties.forEach(function(property) { %>
+                            <div class="media newmedia" style="height: 400px;">
+                                <img class="d-flex align-self-start" src=<%= property.dados.img %>
                                     alt="Generic placeholder image">
-                                <div class="media-body pl-3">
-                                    <div class="price"><%= event.dados.name %><small>R$
-                                            <%= (event.dados.price).toFixed(2)  %></small></div>
+                                <div class="media-body new-media-body pl-3">
+                                    <div class="price"><%= property.dados.identification %><small>Alguel R$
+                                            <%= (property.dados.rent).toFixed(2)  %> Total</small></div>
                                     <div class="stats">
                                         <span><i class="fa fa-map-marker"
-                                                aria-hidden="true"></i><%= event.dados.place %></span>
+                                                aria-hidden="true"></i><%= property.dados.place %></span>
                                         <span><i class="fa fa-calendar"
-                                                aria-hidden="true"></i><%= event.dados.date %></span>
+                                                aria-hidden="true"></i>Check In: <%= moment(property.dados.checkin).format('L, LT') %></span>
+                                        <span><i class="fa fa-calendar"
+                                                aria-hidden="true"></i>Check Out: <%= moment(property.dados.checkout).format('L, LT') %></span>
+                                        <span><i class="fa fa-users" aria-hidden="true"></i><%= property.dados.capacity %> pessoas</span>
                                     </div>
-                                    <div class="address"><%= event.dados.description %>
+                                    <div class="address"><%= property.dados.description %>
                                     </div>
                                 </div>
                             </div>
                             <% }); %>
-                        </div>
-                        <div id="menu2" class="container tab-pane fade"><br>
-                            <h3>Menu 2</h3>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium, totam rem aperiam.</p>
                         </div>
                     </div>
                 </div>

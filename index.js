@@ -7,6 +7,8 @@ const { query } = require('express');
 
 let userLogged;
 
+var moment = require('moment');
+moment.locale('pt-br');
 db = firebase.firestore()
 const app = express()
 var publicDir = require('path').join(__dirname, '/public');
@@ -67,8 +69,16 @@ app.get('/dashboard', function (req, res) {
                 snapshot.forEach(doc => {
                     eventsDate.push({ id: doc.id, dados: doc.data() })
                 });
-                res.render('dashboard', { events: eventsDate })
+                let propertyRef = db.collection("property")
+                let allProperties = propertyRef.get().then(documentsSnaphot => {
+                    const propertiesData = []
+                    documentsSnaphot.forEach(doc2 => {
+                        propertiesData.push({id: doc2 , dados: doc2.data()})
+                    })
+                    res.render('dashboard', { events: eventsDate, properties: propertiesData, moment: moment})
+                })
             })
+        
     } else {
         res.redirect('/')
     }
