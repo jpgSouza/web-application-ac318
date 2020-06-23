@@ -73,12 +73,23 @@ app.get('/dashboard', function (req, res) {
                 let allProperties = propertyRef.get().then(documentsSnaphot => {
                     const propertiesData = []
                     documentsSnaphot.forEach(doc2 => {
-                        propertiesData.push({id: doc2 , dados: doc2.data()})
+                        propertiesData.push({ id: doc2, dados: doc2.data() })
                     })
-                    res.render('dashboard', { events: eventsDate, properties: propertiesData, moment: moment})
+                    let userRef = db.collection('users');
+                    var currentUser = firebase.auth().currentUser;
+                    uid = currentUser.uid
+                    let user = userRef.get().then(userSnapshot => {
+                        const userData = []
+                        userSnapshot.forEach(doc3 => {
+                            if (doc3.id == uid) {
+                                userData.push({ id: doc3.id, dados: doc3.data() })
+                            }
+                        })
+                        res.render('dashboard', { events: eventsDate, properties: propertiesData, moment: moment, user: userData})
+                    })
                 })
             })
-        
+
     } else {
         res.redirect('/')
     }
@@ -105,12 +116,12 @@ app.get('/perfil', function (req, res) {
                     let events = db.collection("events").get().then((events) => {
                         cont = 0
                         const eventsData = []
-                        events.forEach((docs) =>{
-                            
-                            if(cont == myEventData.length){
+                        events.forEach((docs) => {
+
+                            if (cont == myEventData.length) {
                                 return
                             }
-                            if(myEventData[cont].id == docs.id){
+                            if (myEventData[cont].id == docs.id) {
                                 eventsData.push({ id: docs.id, dados: docs.data() })
                                 cont++
                             }
@@ -173,7 +184,6 @@ app.post('/createevent', function (req, res) {
 })
 
 app.post('/deleteevent', function (req, res) {
-    console.log(req.body.id)
     var currentUser = firebase.auth().currentUser;
     uid = currentUser.uid
     let myEventsRef = db.collection('users').doc(uid).collection("myEvents").doc(req.body.id);
@@ -197,6 +207,23 @@ app.post('/createproperty', function (req, res) {
         myPropertyRef.set({
             pid: property.id
         })
+    })
+    res.redirect('/dashboard')
+})
+
+app.post('/buyevent', function (req, res) {
+    var currentUser = firebase.auth().currentUser;
+    uid = currentUser.uid
+    let myTickets = db.collection('users').doc(uid).collection('myTickets')
+    myTickets.add({
+        name: req.body.name,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        cardNumber: req.body.cardnumber,
+        expirationDate: req.body.expirationdate,
+        cvv: req.body.cvv,
+        amount: req.body.amount,
+        total: req.body.price * req.body.amount
     })
     res.redirect('/dashboard')
 })

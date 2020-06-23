@@ -195,13 +195,14 @@
         float: none;
         width: 100%;
     }
-    .new-media-body{
-        height: 180px;
-    }
-    .newmedia img{
+
+    .new-media-body {
         height: 180px;
     }
 
+    .newmedia img {
+        height: 180px;
+    }
 </style>
 <html lang="en">
 
@@ -285,25 +286,103 @@
                     <div class="tab-content">
                         <div id="home" class="container tab-pane active"><br>
                             <% events.forEach(function(event) { %>
-                            <div class="media">
-                                <img class="d-flex align-self-start" src=<%= event.dados.img %>
-                                    alt="Generic placeholder image">
-                                <div class="media-body pl-3">
-                                    <div class="price"><%= event.dados.name %><small>R$
-                                            <%= (event.dados.price).toFixed(2)  %></small></div>
-                                    <div class="stats">
-                                        <span><i class="fa fa-map-marker"
-                                                aria-hidden="true"></i><%= event.dados.place %></span>
-                                        <span><i class="fa fa-calendar"
-                                                aria-hidden="true"></i><%= moment(event.dados.date).format('L, LT') %></span>
+                            <a data-toggle="modal" data-target="#evento<%= event.id %>" href="#">
+                                <div class="media">
+                                    <img class="d-flex align-self-start" src=<%= event.dados.img %>
+                                        alt="Generic placeholder image">
+                                    <div class="media-body pl-3">
+                                        <div class="price"><%= event.dados.name %><small>R$
+                                                <%= (event.dados.price).toFixed(2)  %></small></div>
+                                        <div class="stats">
+                                            <span><i class="fa fa-map-marker"
+                                                    aria-hidden="true"></i><%= event.dados.place %></span>
+                                            <span><i class="fa fa-calendar"
+                                                    aria-hidden="true"></i><%= moment(event.dados.date).format('L, LT') %></span>
+                                        </div>
+                                        <div class="address"><%= event.dados.description %>
+                                        </div>
                                     </div>
-                                    <div class="address"><%= event.dados.description %>
+                                </div>
+                            </a>
+                            <div class="modal fade" id="evento<%= event.id %>" tabindex="-1" role="dialog"
+                                aria-labelledby="eventomodalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Comprar Ingresso <%= event.dados.name %></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+                                        <form action="/buyevent" method="POST">
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="name">Nome</label>
+                                                    <input name="name" value="<%= user[0].dados.name %>" type="text"
+                                                        class="form-control" id="name" placeholder="Nome">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="lastname">Sobrenome</label>
+                                                    <input name="lastname" value="<%= user[0].dados.lastname %>"
+                                                        type="text" class="form-control" id="lastname"
+                                                        placeholder="Sobrenome">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <input name="email" value="<%= user[0].dados.email %>" type="email"
+                                                        class="form-control" id="email" placeholder="Email">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="cardnumber">Numero do Cartão</label>
+                                                    <input name="cardnumber" type="text" class="form-control"
+                                                        id="cardnumber" placeholder="Numero do Cartão">
+                                                </div>
+                                                <div class="row" style="padding-left: 20px; padding-right: 8px;">
+                                                    <div class="form-group" style="margin-right: 29px;">
+                                                        <label for="expirationdate">Data de Validade</label>
+                                                        <input name="expirationdate" type="month" class="form-control"
+                                                            id="expirationdate" placeholder="Data de Validade">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="cvv">CVV</label>
+                                                        <input name="cvv" type="text" maxlength="3" class="form-control"
+                                                            id="cvv" placeholder="CVV">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row" style="padding-left: 20px; padding-right: 8px;">
+                                                    <div class="form-group" style="margin-right: 60px;">
+                                                        <label for="amount">Quantidade</label>
+                                                        <input name="amount" type="number"
+                                                            class="form-control get-total" id="amount"
+                                                            placeholder="Quantidade">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="price">Preço</label>
+                                                        <input value="<%= event.dados.price %>" name="price"
+                                                            type="hidden" class="form-control show-total" id="price"
+                                                            placeholder="Preço">
+                                                        <input value="<%= event.dados.price %>" type="text" disabled
+                                                            class="form-control show-total" placeholder="Preço">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Comprar</button>
+                                            </div>
+                                        </form>
+
                                     </div>
+
                                 </div>
                             </div>
                             <% }); %>
                         </div>
-                        <div id="menu1" class="container tab-pane fade" ><br>
+
+                        <div id="menu1" class="container tab-pane fade"><br>
                             <% properties.forEach(function(property) { %>
                             <div class="media newmedia" style="height: 400px;">
                                 <img class="d-flex align-self-start" src=<%= property.dados.img %>
@@ -314,11 +393,12 @@
                                     <div class="stats">
                                         <span><i class="fa fa-map-marker"
                                                 aria-hidden="true"></i><%= property.dados.place %></span>
-                                        <span><i class="fa fa-calendar"
-                                                aria-hidden="true"></i>Check In: <%= moment(property.dados.checkin).format('L, LT') %></span>
-                                        <span><i class="fa fa-calendar"
-                                                aria-hidden="true"></i>Check Out: <%= moment(property.dados.checkout).format('L, LT') %></span>
-                                        <span><i class="fa fa-users" aria-hidden="true"></i><%= property.dados.capacity %> pessoas</span>
+                                        <span><i class="fa fa-calendar" aria-hidden="true"></i>Check In:
+                                            <%= moment(property.dados.checkin).format('L, LT') %></span>
+                                        <span><i class="fa fa-calendar" aria-hidden="true"></i>Check Out:
+                                            <%= moment(property.dados.checkout).format('L, LT') %></span>
+                                        <span><i class="fa fa-users"
+                                                aria-hidden="true"></i><%= property.dados.capacity %> pessoas</span>
                                     </div>
                                     <div class="address"><%= property.dados.description %>
                                     </div>
