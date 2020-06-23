@@ -276,14 +276,12 @@
             <div class="col-9">
                 <div data-spy="scroll" data-target="#navbarVertical" data-offset="0" class="scrollspySite">
                     <div class="col-md-12 listing-block" id="item1">
-                        <% events.forEach(function(event) { %> <!-- AQUI ESTOU FAZENDO O FOR -->
-                            <!-- VAI REPETIR ESSA DIV ENQUANTO ESTIVER DADOS NO BANCO -->
+                        <% events.forEach(function(event) { %>
                             <div class="media">
                                 <img class="d-flex align-self-start"
                                     src= <%= event.dados.img %>
                                     alt="Generic placeholder image">
                                 <div class="media-body pl-3">
-                                    <!-- AQUI ESTOU MOSTRANDO OS ITENS DE ACORDO [DEFAULT: EVENT.DADOS.(O Q VC QUER) ]-->
                                     <div class="price"><%= event.dados.name %><small>R$ <%= (event.dados.price).toFixed(2)  %></small></div>
                                     <div class="stats">
                                         <span><i class="fa fa-map-marker" aria-hidden="true"></i><%= event.dados.place %></span>

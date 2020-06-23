@@ -174,5 +174,23 @@ app.post('/deleteevent', function (req, res) {
     res.redirect('/perfil')
 })
 
+app.post('/createproperty', function (req, res) {
+    let propertyRef = db.collection('property')
+    rent = req.body.rent
+    rent = parseFloat(rent)
+    let createProperty = propertyRef.add({
+        identification: req.body.identification,
+        checkin: req.body.checkin, checkout: req.body.checkout, place: req.body.place, rent: rent, description: req.body.description, capacity: req.body.capacity
+    }).then((property) => {
+        var currentUser = firebase.auth().currentUser;
+        uid = currentUser.uid
+        myPropertyRef = db.collection("users").doc(uid).collection("myProperties").doc(property.id)
+        myPropertyRef.set({
+            pid: property.id
+        })
+    })
+    res.redirect('/dashboard')
+})
+
 
 app.listen(3000)

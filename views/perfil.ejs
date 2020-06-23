@@ -413,7 +413,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form>
+                <form action="/createproperty" method="POST">
                     <div class="modal-body">
 
                         <div class="form-group">
@@ -422,23 +422,31 @@
                         </div>
                         <div class="form-group">
                             <label for="nomeevento">Identificação</label>
-                            <input type="text" class="form-control" id="identificacao" placeholder="identificacao">
+                            <input name="identification" type="text" class="form-control" id="identificacao" placeholder="identificacao">
                         </div>
                         <div class="form-group">
-                            <label for="dataimovel">Data</label>
-                            <input type="datetime-local" class="form-control" id="dataimovel" placeholder="Data">
+                            <label for="checkin">Check in</label>
+                            <input name="checkin" type="datetime-local" class="form-control" id="checkin" placeholder="Check In">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout">Check out</label>
+                            <input name="checkout" type="datetime-local" class="form-control" id="checkout" placeholder="Check Out">
                         </div>
                         <div class="form-group">
                             <label for="localimovel">Local</label>
-                            <input type="text" class="form-control" id="localimovel" placeholder="Local">
+                            <input name="place" type="text" class="form-control" id="localimovel" placeholder="Local">
                         </div>
                         <div class="form-group">
-                            <label for="localimovel">Preço</label>
-                            <input type="text" class="form-control" id="precoimovel" placeholder="Preco">
+                            <label for="localimovel">Aluguel</label>
+                            <input name="rent" type="text" class="form-control" id="precoimovel" placeholder="Preco">
                         </div>
                         <div class="form-group">
                             <label for="descricaoimovel">Descrição</label>
-                            <input type="text" class="form-control" id="descricaoimovel" placeholder="Descrição">
+                            <input name="description" type="text" class="form-control" id="descricaoimovel" placeholder="Descrição">
+                        </div>
+                        <div class="form-group">
+                            <label for="capacidadeImovel">Capacidade</label>
+                            <input name="capacity" type="text" class="form-control" id="capacidadeImovel" placeholder="Capacidade">
                         </div>
                     </div>
                     <div class="modal-footer">
