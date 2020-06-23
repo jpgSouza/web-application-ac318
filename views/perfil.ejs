@@ -312,7 +312,7 @@
             <% myEvents.forEach(function(eventData) { %>
             <div class="col-md-3 cardstyle" style="margin-right: 10px;">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="<%= eventData.dados.img %>" alt="Card image cap">
+                    <img class="card-img-top image-responsive" style="height: 200px;" src="<%= eventData.dados.img %>" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><%= eventData.dados.name %></h5>
                         <p class="card-text"><%= eventData.dados.description %></p>
@@ -366,8 +366,8 @@
                 <form action="/createevent" method="POST">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="fotoevento">Foto</label>
-                            <input type="file" class="form-control" id="fotoevento" placeholder="foto">
+                            <label for="fotoevento">Link da foto</label>
+                            <input type="text" class="form-control" id="fotoevento" placeholder="URL" name="fotourl">
                         </div>
                         <div class="form-group">
                             <label for="nomeevento">Nome do evento</label>
@@ -417,8 +417,8 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label for="fotoevento">Foto</label>
-                            <input type="file" class="form-control" id="fotoevento" placeholder="foto">
+                            <label for="fotoevento">Link da foto</label>
+                            <input type="text" class="form-control" id="fotoevento" placeholder="URL" name="fotourl">
                         </div>
                         <div class="form-group">
                             <label for="nomeevento">Identificação</label>

@@ -171,7 +171,7 @@ app.post('/createevent', function (req, res) {
     price = parseFloat(price)
     let createEvent = eventRef.add({
         name: req.body.name,
-        date: req.body.date, place: req.body.place, price: price, description: req.body.description
+        date: req.body.date, place: req.body.place, price: price, description: req.body.description, img: req.body.fotourl,
     }).then((event) => {
         var currentUser = firebase.auth().currentUser;
         uid = currentUser.uid
@@ -199,7 +199,7 @@ app.post('/createproperty', function (req, res) {
     rent = parseFloat(rent)
     let createProperty = propertyRef.add({
         identification: req.body.identification,
-        checkin: req.body.checkin, checkout: req.body.checkout, place: req.body.place, rent: rent, description: req.body.description, capacity: req.body.capacity
+        checkin: req.body.checkin, checkout: req.body.checkout, place: req.body.place, rent: rent, description: req.body.description, capacity: req.body.capacity, img: req.body.fotourl
     }).then((property) => {
         var currentUser = firebase.auth().currentUser;
         uid = currentUser.uid
