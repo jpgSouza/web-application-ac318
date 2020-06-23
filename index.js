@@ -88,7 +88,6 @@ app.get('/perfil', function (req, res) {
                     }
                 });
                 let myEvents = db.collection("users").doc(uid).collection("myEvents").get().then(snapshot => {
-                    console.log("Antes do My Events")
                     const myEventData = []
                     snapshot.forEach((doc) => {
                         myEventData.push({ id: doc.id })

@@ -190,6 +190,11 @@
         border-style: none;
         width: 25%;
     }
+
+    li.nav-item {
+        float: none;
+        width: 100%;
+    }
 </style>
 <html lang="en">
 
@@ -255,47 +260,75 @@
         </div>
         <div class="row mb-5">
             <div class="col-3">
-                <nav id="navbarVertical" class="navbar navbar-light bg-light">
+                <ul class="nav nav-tabs" role="tablist">
                     <nav class="nav nav-pills flex-column">
-                        <a class="nav-link" href="#item1">Eventos</a>
-                        <nav class="nav nav-pills flex-column">
-                            <a class="nav-link ml-3" href="#item1-1">Festas</a>
-                            <a class="nav-link ml-3" href="#item1-2">Apresentações</a>
-                        </nav>
-                        <a class="nav-link my-2" href="#item2">Algum titulo</a>
-                        <nav class="nav nav-pills flex-column">
-                            <a class="nav-link ml-3" href="#item2-1">Subtitulo1</a>
-                            <a class="nav-link ml-3" href="#item2-2">Subtitulo2</a>
-                        </nav>
-
-                        <a class="nav-link my-2" href="#item3">Imóveis</a>
-
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#home">Eventos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#menu1">Imóveis</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+                            </li>
+                        </ul>
                     </nav>
-                </nav>
+                </ul>
             </div>
             <div class="col-9">
-                <div data-spy="scroll" data-target="#navbarVertical" data-offset="0" class="scrollspySite">
-                    <div class="col-md-12 listing-block" id="item1">
-                        <% events.forEach(function(event) { %>
+                <div class="container">
+                    <div class="tab-content">
+                        <div id="home" class="container tab-pane active"><br>
+                            <% events.forEach(function(event) { %>
                             <div class="media">
-                                <img class="d-flex align-self-start"
-                                    src= <%= event.dados.img %>
+                                <img class="d-flex align-self-start" src=<%= event.dados.img %>
                                     alt="Generic placeholder image">
                                 <div class="media-body pl-3">
-                                    <div class="price"><%= event.dados.name %><small>R$ <%= (event.dados.price).toFixed(2)  %></small></div>
+                                    <div class="price"><%= event.dados.name %><small>R$
+                                            <%= (event.dados.price).toFixed(2)  %></small></div>
                                     <div class="stats">
-                                        <span><i class="fa fa-map-marker" aria-hidden="true"></i><%= event.dados.place %></span>
-                                        <span><i class="fa fa-calendar" aria-hidden="true"></i><%= event.dados.date %></span>
+                                        <span><i class="fa fa-map-marker"
+                                                aria-hidden="true"></i><%= event.dados.place %></span>
+                                        <span><i class="fa fa-calendar"
+                                                aria-hidden="true"></i><%= event.dados.date %></span>
                                     </div>
                                     <div class="address"><%= event.dados.description %>
-                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        <% }); %>
+                            <% }); %>
+                        </div>
+                        <div id="menu1" class="container tab-pane fade"><br>
+                            <% events.forEach(function(event) { %>
+                            <div class="media">
+                                <img class="d-flex align-self-start" src=<%= event.dados.img %>
+                                    alt="Generic placeholder image">
+                                <div class="media-body pl-3">
+                                    <div class="price"><%= event.dados.name %><small>R$
+                                            <%= (event.dados.price).toFixed(2)  %></small></div>
+                                    <div class="stats">
+                                        <span><i class="fa fa-map-marker"
+                                                aria-hidden="true"></i><%= event.dados.place %></span>
+                                        <span><i class="fa fa-calendar"
+                                                aria-hidden="true"></i><%= event.dados.date %></span>
+                                    </div>
+                                    <div class="address"><%= event.dados.description %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }); %>
+                        </div>
+                        <div id="menu2" class="container tab-pane fade"><br>
+                            <h3>Menu 2</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                laudantium, totam rem aperiam.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js"></script>
