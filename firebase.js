@@ -2,16 +2,6 @@ const firebase = require('firebase');
 const { firestore } = require('firebase');
 const { query } = require('express');
 
-var firebaseConfig = {
-    apiKey: "AIzaSyAPUikQqybSDlEik0FyV9dI-hTol7077uA",
-    authDomain: "ac-328.firebaseapp.com",
-    databaseURL: "https://ac-328.firebaseio.com",
-    projectId: "ac-328",
-    storageBucket: "ac-328.appspot.com",
-    messagingSenderId: "68754286324",
-    appId: "1:68754286324:web:c8dda4aae4e5ce22c1a0a1"
-  };
-
 firebase.initializeApp(firebaseConfig);
 
 db = firebase.firestore();
